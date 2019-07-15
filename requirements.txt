@@ -10,3 +10,4 @@ SQLAlchemy==1.3.5
 Werkzeug==0.15.4
 WTForms==2.2.1
 gunicorn==19.9.0
+flask-heroku==0.1.3
