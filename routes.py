@@ -2,9 +2,16 @@ from flask import Flask, render_template, request, redirect, url_for
 from models import db, User
 from forms import UsersForm, DeleteUserForm
 
-app = Flask(__name__)
+# For local development
+#app = Flask(__name__)
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/usersdb'
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/usersdb'
+#For Production
+from flask_heroku import Heroku
+
+app = Flask(__name__)
+heroku = Heroku(app)
+
 db.init_app(app)
 
 app.secret_key = "e14a-key"
@@ -66,5 +73,3 @@ def edit_user():
 
 if __name__ == "__main__":
   app.run()
-
-  #    db.session.query(Users).all();
